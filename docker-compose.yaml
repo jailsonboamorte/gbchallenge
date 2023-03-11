@@ -8,9 +8,13 @@ services:
     container_name: app
     environment:
       - ENV_FOR_DYNACONF
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     volumes:
       - .:/app
     restart: always
+    command: tail -f /dev/null
   db:
     image: mysql:5.7
     restart: always
