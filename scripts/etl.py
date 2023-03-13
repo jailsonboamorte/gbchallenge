@@ -22,12 +22,12 @@ query_map = {
 
 def process_chunk(table, df):
     try:
-        
-        columns_list = [column(col) for col in df.columns]        
+
+        columns_list = [column(col) for col in df.columns]
         table_object = table_sa(table, *columns_list)
 
         values = df.to_dict("records")
-        stmt = insert(table_object).values(values)        
+        stmt = insert(table_object).values(values)
         result = run_stmt(stmt)
         return result.rowcount
     except Exception as e:
@@ -64,18 +64,20 @@ def process_query(table):
         print("Error on process_query", err)
         return table, 0
 
+
 def process_queries():
     with ThreadPoolExecutor() as executor:
 
         futures = [
-            executor.submit(process_query, process) for process in query_map.keys()
-        ]  # noqa E501
+            executor.submit(process_query, process)
+            for process in query_map.keys()  # noqa E501
+        ]
 
         summary = {}
 
         for future in as_completed(futures):
             file, qty_inserted = future.result()
-            #print(file, qty_inserted)
+            # print(file, qty_inserted)
             summary[file] = qty_inserted
 
         pprint(summary)
@@ -83,9 +85,9 @@ def process_queries():
 
 if __name__ == "__main__":
     now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    print(f'START AT: {now}')
+    print(f"START AT: {now}")
     truncate_tables(target_tables)
-    print('---------')
+    print("---------")
     process_queries()
     now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    print(f'END AT: {now}')
+    print(f"END AT: {now}")

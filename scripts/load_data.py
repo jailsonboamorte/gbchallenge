@@ -80,7 +80,7 @@ def load_data(tables):
             ]  # noqa E501
 
             for future in as_completed(futures):
-                table, qty_inserted = future.result()                
+                table, qty_inserted = future.result()
                 if table in summary:
                     summary[table] = summary[table] + qty_inserted
                 else:
@@ -91,11 +91,12 @@ def load_data(tables):
     except Exception as e:
         print("Error on load_data", e)
 
+
 if __name__ == "__main__":
     now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    print(f'START AT: {now}')
+    print(f"START AT: {now}")
     truncate_tables(source_tables)
-    print('---------')
+    print("---------")
     load_data(source_tables)
     now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    print(f'END AT: {now}')
+    print(f"END AT: {now}")

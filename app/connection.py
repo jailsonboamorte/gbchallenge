@@ -10,7 +10,7 @@ def get_engine():
     database = os.environ["MYSQL_DATABASE"]
 
     return create_engine(
-        f"mysql+pymysql://{user}:{password}@{host}/{database}", pool_recycle=3600
+        f"mysql+pymysql://{user}:{password}@{host}/{database}", pool_recycle=3600 # noqa E501
     )
 
 

@@ -3,8 +3,9 @@ from sqlalchemy import text
 from app.connection import run_stmt
 from app.schemas import source_tables, target_tables
 
+
 def create_tables(tables):
-    try:        
+    try:
         for table in tables:
             try:
                 create_table = tables[table]

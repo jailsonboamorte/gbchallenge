@@ -16,7 +16,7 @@ source_tables = {
 target_tables = {
     "sales_by_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_year_month (
-        id int NOT NULL AUTO_INCREMENT,        
+        id int NOT NULL AUTO_INCREMENT,
         sale_year YEAR NOT NULL,
         sale_month VARCHAR(2) NOT NULL,
         sum_qtd_venda int NOT NULL,
@@ -25,7 +25,7 @@ target_tables = {
     """,
     "sales_by_brand_category": """
         CREATE TABLE IF NOT EXISTS sales_by_brand_category (
-        id int NOT NULL AUTO_INCREMENT,        
+        id int NOT NULL AUTO_INCREMENT,
         id_marca int NOT NULL,
         id_linha int NOT NULL,
         marca VARCHAR(100) NOT NULL,
@@ -36,22 +36,22 @@ target_tables = {
     """,
     "sales_by_brand_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_brand_year_month (
-        id int NOT NULL AUTO_INCREMENT,        
+        id int NOT NULL AUTO_INCREMENT,
         id_marca int NOT NULL,
         sale_year YEAR NOT NULL,
         sale_month VARCHAR(2) NOT NULL,
-        marca VARCHAR(100) NOT NULL,        
+        marca VARCHAR(100) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1
     """,
     "sales_by_category_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_category_year_month (
-        id int NOT NULL AUTO_INCREMENT,        
+        id int NOT NULL AUTO_INCREMENT,
         id_linha int NOT NULL,
         sale_year YEAR NOT NULL,
         sale_month VARCHAR(2) NOT NULL,
-        linha VARCHAR(100) NOT NULL,        
+        linha VARCHAR(100) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1
