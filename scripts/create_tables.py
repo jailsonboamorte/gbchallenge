@@ -1,5 +1,5 @@
 from app.connection import get_connection, get_cursor
-from app.schemas import tables as all_tables
+from app.schemas import source_tables, target_tables
 
 conn = get_connection()
 
@@ -21,4 +21,5 @@ def create_tables(tables):
         print("Error on connection", e)
 
 if __name__ == "__main__":
-    create_tables(all_tables)
+    create_tables(source_tables)
+    create_tables(target_tables)

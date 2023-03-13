@@ -6,7 +6,7 @@ from pprint import pprint
 import pandas as pd
 
 from app.connection import get_connection, get_cursor
-from app.schemas import tables as all_tables
+from app.schemas import source_tables
 from app.truncate_tables import truncate_tables
 
 data_path = "gb_inputs/data"
@@ -129,5 +129,5 @@ def load_data(tables):
         print("Error on load_data", e)
 
 
-truncate_tables(all_tables)
-load_data(all_tables)
+truncate_tables(source_tables)
+load_data(source_tables)
