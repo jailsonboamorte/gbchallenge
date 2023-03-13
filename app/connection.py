@@ -1,26 +1,27 @@
 import os
 
-import mysql.connector as msql
-from mysql.connector import Error
+from sqlalchemy import create_engine
 
 
-def get_connection():
+def get_engine():
+    host = os.environ["MYSQL_HOST"]
+    user = os.environ["MYSQL_USER"]
+    password = os.environ["MYSQL_PASSWORD"]
+    database = os.environ["MYSQL_DATABASE"]
+
+    return create_engine(
+        f"mysql+pymysql://{user}:{password}@{host}/{database}", pool_recycle=3600
+    )
+
+
+def run_stmt(stmt):
     try:
-        conn = msql.connect(
-            host="mydb",
-            user=os.environ["MYSQL_USER"],
-            database=os.environ["MYSQL_DATABASE"],
-            password=os.environ["MYSQL_PASSWORD"],
-            port=3306,
-        )
-
-        return conn
-    except Error as e:
-        print("Error while connecting to MySQL", e)
-
-
-def get_cursor(conn):
-    if conn.is_connected():
-        cursor = conn.cursor()
-        return cursor
-    return None
+        engine = get_engine()
+        with engine.connect() as conn:
+            result = conn.execute(stmt)
+            conn.commit()
+            return result
+    except Exception as e:
+        err = {"detail": e}
+        print("Error on run_stmt", err)
+        return None

@@ -17,8 +17,8 @@ target_tables = {
     "sales_by_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_year_month (
         id int NOT NULL AUTO_INCREMENT,        
-        year YEAR NOT NULL,
-        month VARCHAR(2) NOT NULL,
+        sale_year YEAR NOT NULL,
+        sale_month VARCHAR(2) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1
@@ -38,8 +38,8 @@ target_tables = {
         CREATE TABLE IF NOT EXISTS sales_by_brand_year_month (
         id int NOT NULL AUTO_INCREMENT,        
         id_marca int NOT NULL,
-        year YEAR NOT NULL,
-        month VARCHAR(2) NOT NULL,
+        sale_year YEAR NOT NULL,
+        sale_month VARCHAR(2) NOT NULL,
         marca VARCHAR(100) NOT NULL,        
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
@@ -49,8 +49,8 @@ target_tables = {
         CREATE TABLE IF NOT EXISTS sales_by_category_year_month (
         id int NOT NULL AUTO_INCREMENT,        
         id_linha int NOT NULL,
-        year YEAR NOT NULL,
-        month VARCHAR(2) NOT NULL,
+        sale_year YEAR NOT NULL,
+        sale_month VARCHAR(2) NOT NULL,
         linha VARCHAR(100) NOT NULL,        
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
