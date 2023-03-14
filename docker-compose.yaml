@@ -8,10 +8,12 @@ services:
     container_name: app
     environment:
       - ENV_FOR_DYNACONF
-      - MYSQL_HOST
       - MYSQL_DATABASE
-      - MYSQL_USER
+      - MYSQL_HOST
       - MYSQL_PASSWORD
+      - MYSQL_USER
+      - SPOTIFY_CLIENT_ID
+      - SPOTIFY_CLIENTE_SECRET
     volumes:
       - .:/app
     restart: always
@@ -22,9 +24,9 @@ services:
     container_name: mydb
     environment:
       - MYSQL_DATABASE
-      - MYSQL_USER
       - MYSQL_PASSWORD
       - MYSQL_ROOT_PASSWORD
+      - MYSQL_USER
     ports:
       - '3306:3306'
     expose:
