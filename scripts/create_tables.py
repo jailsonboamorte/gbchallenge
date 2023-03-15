@@ -1,7 +1,7 @@
 from sqlalchemy import text
 
 from app.connection import run_stmt
-from app.schemas import source_tables, target_tables
+from app.schemas import source_tables, target_tables, spotify_tables
 
 
 def create_tables(tables):
@@ -22,3 +22,4 @@ def create_tables(tables):
 if __name__ == "__main__":
     create_tables(source_tables)
     create_tables(target_tables)
+    create_tables(spotify_tables)

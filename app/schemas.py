@@ -57,3 +57,44 @@ target_tables = {
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1
     """,
 }
+
+
+spotify_tables = {
+    "spotify_podcast": """
+        CREATE TABLE IF NOT EXISTS spotify_podcast (
+        id VARCHAR(100) NOT NULL,
+        name VARCHAR(100) NOT NULL,
+        description TEXT NOT NULL,
+        total_episodes int NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    """,
+    "spotify_podcast_episodes": """
+        CREATE TABLE IF NOT EXISTS spotify_podcast_episodes (
+        id VARCHAR(100) NOT NULL,
+        podcast_id VARCHAR(100) NOT NULL,
+        name VARCHAR(100) NOT NULL,
+        description TEXT NOT NULL,
+        release_date DATE NOT NULL,
+        duration_ms INT NOT NULL,
+        language VARCHAR(50) NOT NULL,
+        explicit BOOLEAN NOT NULL,
+        type VARCHAR(50) NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    """,
+    "spotify_gb_podcast_episodes": """
+        CREATE TABLE IF NOT EXISTS spotify_gb_podcast_episodes (
+        id VARCHAR(100) NOT NULL,
+        podcast_id VARCHAR(100) NOT NULL,
+        name VARCHAR(100) NOT NULL,
+        description TEXT NOT NULL,
+        release_date DATE NOT NULL,
+        duration_ms INT NOT NULL,
+        language VARCHAR(50) NOT NULL,
+        explicit BOOLEAN NOT NULL,
+        type VARCHAR(50) NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    """,
+}
