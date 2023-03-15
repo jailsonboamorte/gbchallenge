@@ -1,7 +1,7 @@
 from sqlalchemy import text
 
 from app.connection import run_stmt
-from app.schemas import source_tables, target_tables
+from app.schemas import source_tables, target_tables, spotify_tables
 
 
 def drop_tables(tables):
@@ -22,3 +22,4 @@ def drop_tables(tables):
 if __name__ == "__main__":
     drop_tables(source_tables)
     drop_tables(target_tables)
+    drop_tables(spotify_tables)

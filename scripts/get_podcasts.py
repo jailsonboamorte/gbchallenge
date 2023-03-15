@@ -3,19 +3,40 @@ from datetime import datetime
 from functools import partial
 from pprint import pprint
 
+from sqlalchemy import column, insert
+from sqlalchemy import table as table_sa
+
+from app.connection import run_stmt
 from app.schemas import spotify_tables
 from app.spotify import extract_gb_episodes, get_all_episodes, get_podcasts
 from app.truncate_tables import truncate_tables
 
 
+def save_data(table, data):
+
+    try:
+        columns_list = [column(col) for col in data[0].keys()]
+        table_object = table_sa(table, *columns_list)
+
+        stmt = insert(table_object).values(data)
+        result = run_stmt(stmt)
+        return result.rowcount
+
+    except Exception as e:
+        err = {"table": table, "detail": e}
+        print("Error on save_data", err)
+
+
 def process_spotify_data():
     try:
+
+        podcasts = get_podcasts()
 
         episodes = []
         gb_episodes = []
 
-        podcasts = get_podcasts()
-        summary = {"podcast": {"qty": len(podcasts)}}
+        summary = {}
+
         func = partial(get_all_episodes)
         with ThreadPoolExecutor() as executor:
             futures = [
@@ -39,11 +60,21 @@ def process_spotify_data():
                     }
                 }
 
-        summary["gb_episodes"] = {"qty": len(gb_episodes)}
+        summary["source"] = {
+            "podcast": {"qty": len(podcasts)},
+            "gb_episodes": {"qty": len(gb_episodes)},
+            "episodes": {"qty": len(episodes)},
+        }
 
-        # print(gb_episodes[:1])
-        # print("-----")
-        # pprint(episodes[:1])
+        qty_podcasts = save_data("spotify_podcast", podcasts)
+        qty_episodes = save_data("spotify_podcast_episodes", episodes)
+        qty_gb_episodes = save_data("spotify_gb_podcast_episodes", gb_episodes)
+
+        summary["saved"] = {
+            "podcasts": {"qty": qty_podcasts},
+            "episodes": {"qty": qty_episodes},
+            "gb_episodes": {"qty": qty_gb_episodes},
+        }
 
     except Exception as e:
         err = {"detail": e}

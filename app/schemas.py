@@ -9,7 +9,7 @@ source_tables = {
         marca VARCHAR(100) NOT NULL,
         linha VARCHAR(100) NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
 }
 
@@ -21,7 +21,7 @@ target_tables = {
         sale_month VARCHAR(2) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
     "sales_by_brand_category": """
         CREATE TABLE IF NOT EXISTS sales_by_brand_category (
@@ -32,7 +32,7 @@ target_tables = {
         linha VARCHAR(100) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
     "sales_by_brand_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_brand_year_month (
@@ -43,7 +43,7 @@ target_tables = {
         marca VARCHAR(100) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
     "sales_by_category_year_month": """
         CREATE TABLE IF NOT EXISTS sales_by_category_year_month (
@@ -54,7 +54,7 @@ target_tables = {
         linha VARCHAR(100) NOT NULL,
         sum_qtd_venda int NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
 }
 
@@ -63,17 +63,17 @@ spotify_tables = {
     "spotify_podcast": """
         CREATE TABLE IF NOT EXISTS spotify_podcast (
         id VARCHAR(100) NOT NULL,
-        name VARCHAR(100) NOT NULL,
+        name VARCHAR(150) NOT NULL,
         description TEXT NOT NULL,
         total_episodes int NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
     "spotify_podcast_episodes": """
         CREATE TABLE IF NOT EXISTS spotify_podcast_episodes (
         id VARCHAR(100) NOT NULL,
         podcast_id VARCHAR(100) NOT NULL,
-        name VARCHAR(100) NOT NULL,
+        name VARCHAR(200) NOT NULL,
         description TEXT NOT NULL,
         release_date DATE NOT NULL,
         duration_ms INT NOT NULL,
@@ -81,13 +81,13 @@ spotify_tables = {
         explicit BOOLEAN NOT NULL,
         type VARCHAR(50) NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
     "spotify_gb_podcast_episodes": """
         CREATE TABLE IF NOT EXISTS spotify_gb_podcast_episodes (
         id VARCHAR(100) NOT NULL,
         podcast_id VARCHAR(100) NOT NULL,
-        name VARCHAR(100) NOT NULL,
+        name VARCHAR(200) NOT NULL,
         description TEXT NOT NULL,
         release_date DATE NOT NULL,
         duration_ms INT NOT NULL,
@@ -95,6 +95,6 @@ spotify_tables = {
         explicit BOOLEAN NOT NULL,
         type VARCHAR(50) NOT NULL,
         PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
     """,
 }
