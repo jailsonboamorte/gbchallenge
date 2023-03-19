@@ -125,6 +125,9 @@
                 <mxCell id="51" value="RDS" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.rds;fillColor=#2E73B8;gradientColor=none;labelBackgroundColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;" parent="52" vertex="1">
                     <mxGeometry x="188" y="61" width="36.5" height="39" as="geometry"/>
                 </mxCell>
+                <mxCell id="93" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;" edge="1" parent="1" source="56" target="92">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="56" value="&lt;b&gt;AWS GLUE / CATALOG / ATHENA&lt;/b&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.glue;fillColor=#F58534;gradientColor=none;labelBackgroundColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="920" y="627.5" width="82.5" height="99" as="geometry"/>
                 </mxCell>
@@ -160,6 +163,9 @@
                 </mxCell>
                 <mxCell id="91" style="edgeStyle=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="30" target="90">
                     <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="Quicksight&lt;br&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.quicksight;fillColor=#00B7F4;gradientColor=none;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1131" y="647" width="60" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
